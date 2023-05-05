@@ -1,10 +1,14 @@
+//sass sass/main.scss ./css/main.css /
+
+@use "reset";
+
 $color_Primary : grey;
 
+
 nav {
-
-
-    background-color:$color_Primary;
+    background-color: $color_Primary;
     color: white;
+    font-size: 1rem;
 
     ul {
         li {
