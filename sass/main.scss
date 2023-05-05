@@ -4,15 +4,22 @@
 
 $color_Primary : grey;
 
+.champ_form {
+    margin: 1rem;
+
+    input {
+        width: 80%;
+    }
+}
 
 nav {
     background-color: $color_Primary;
     color: white;
     font-size: 1rem;
-    display: inline-block;
 
     ul {
         li {
+            display: inline-block;
 
             a {
                 color: white;

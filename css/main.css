@@ -11,6 +11,13 @@ body {
   font-size: 1.6rem;
 }
 
+.champ_form {
+  margin: 1rem;
+}
+.champ_form input {
+  width: 80%;
+}
+
 nav {
   background-color: grey;
   color: white;
