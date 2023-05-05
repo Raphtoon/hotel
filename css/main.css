@@ -1,0 +1,16 @@
+nav {
+  background-color: grey;
+  color: white;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=main.css.map */
