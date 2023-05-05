@@ -1,40 +1,68 @@
 //sass sass/main.scss ./css/main.css /
 
 @use "reset";
-
 $color_Primary : grey;
-.form_config{
-    background-color: #1C1C1C;
-    color:white;
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+        width: 5rem;
+        height: auto;
+    }
 }
+
+.form_config {
+    background-color: #1C1C1C;
+    color: white;
+}
+
 .champ_form {
     margin: 0.2rem;
     padding: 1rem;
+
     input {
         width: 80%;
         height: 3rem;
     }
 }
-.buttonBrown{
+
+.buttonBrown {
     background-color: #b99470;
     margin-bottom: 1rem;
-    a{
+
+    a {
         display: flex;
         justify-content: center;
         text-decoration: none;
         align-items: center;
     }
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:visited {
+        text-decoration: none;
+    }
 }
+
 nav {
     background-color: $color_Primary;
     color: white;
     font-size: 1rem;
     margin: 0;
+    height: 5rem;
+
     li {
         display: inline-block;
+
         a {
             color: white;
             text-decoration: none;
+
             &:hover {
                 text-decoration: underline;
             }
