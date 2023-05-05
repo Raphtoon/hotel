@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Olivarius</title>
 </head>
+
 <body>
 
     <header>
@@ -25,7 +26,32 @@
         </nav>
     </header>
 
-<script src="js/app.js"></script>
+
+    <form action="">
+        <label for="firstname">
+            <input type="text" placeholder="Jean" id="name">
+        </label>
+        <label for="lastname">
+            <input type="text" placeholder="Dujardin" id="surname">
+        </label>
+        <label for="night">
+            <input type="number" placeholder="2" id="numNight">
+        </label>
+        <label for="typeOfRoom">
+            <select id="typeOfRoom">
+                <option value="loft" selected>Loft</option>
+                <option value="one_person">Chambre 1 personne</option>
+                <option value="one_person">Chambre 2 personnes</option>
+                <option value="one_person">Chambre 4 personnes</option>
+            </select>
+        </label>
+        <input type="radio" id="breakfast_true" id="name">
+        <label for="breakfast_true">Oui</label>
+        <input type="radio" id="breakfast_false" id="name">
+        <label for="breakfast_false">Non</label>
+
+    </form>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
