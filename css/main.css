@@ -12,13 +12,22 @@ body {
 }
 
 .logo {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
 }
 .logo img {
   width: 5rem;
   height: auto;
+}
+
+.insert {
+  background-image: url(/img/Lille-Seminaires.jpg);
+  background-position: 2rem;
+  height: 50rem;
+}
+.insert p {
+  text-align: center;
 }
 
 .form_config {

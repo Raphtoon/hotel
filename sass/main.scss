@@ -4,8 +4,8 @@
 $color_Primary : grey;
 
 .logo {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: space-between;
 
     img {
@@ -14,6 +14,16 @@ $color_Primary : grey;
     }
 }
 
+
+.insert{
+    background-image: url(/img/Lille-Seminaires.jpg);
+    background-position: 2rem;
+    height: 50rem;
+    p {
+        text-align: center;
+
+    }
+}
 .form_config {
     background-color: #1C1C1C;
     color: white;
