@@ -7,67 +7,91 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+
+    .space_white {
+        font-size: 1.5rem;
+
+        a {
+            text-decoration: none;
+            color: white;
+            justify-content: space-between;
+            margin: 1rem;
+        }
+    }
+
     img {
-        height: 4rem;
+        height: 2rem;
     }
 }
 
+.insert-two {
+    background-image: url(/img/Lille-Hall.jpg);
+    background-position: center;
+    height: 50vh;
+    position: relative;
+
+    .text-insert-two {
+        background-color: rgba(255, 255, 255, 0.678);
+        padding: 1rem;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+
+    }
+}
 
 .insert {
     background-image: url(/img/Lille-Seminaires.jpg);
     background-position: center;
     height: 50vh;
     position: relative;
-    display: flex;
+
     .text-insert {
-        background-color: white;
-        position:absolute;
+        padding: 1rem;
+        background-color: rgba(255, 255, 255, 0.678);
+        position: absolute;
+        text-align: center;
         top: 50%;
-        bottom: 50%;
+        left: 50%;
     }
 }
 
 .form_config {
     background-color: #1C1C1C;
     color: white;
-}
-
-.champ_form {
-    margin: 0.2rem;
-    padding: 3rem;
-
-    input {
-        width: 60%;
-        height: 3rem;
+    padding: 1rem;
+    .champ_form {
+        input,select {
+            width: 100%;
+            height: 3rem;
+        }
     }
 }
+
 
 .buttonBrown {
     background-color: #b99470;
-    margin-bottom: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+    width: 80%;
+    display: flex;
 
     a {
-        display: flex;
         justify-content: center;
         text-decoration: none;
-        align-items: center;
+        color: white;
     }
 
-    &:hover {
-        text-decoration: none;
-    }
-
-    &:visited {
-        text-decoration: none;
-    }
 }
 
 nav {
     background-color: v.$color_Primary;
     color: white;
     font-size: 1rem;
+    padding: 1rem;
     margin: 0;
-    height: 5rem;
+    height: 6rem;
 
     li {
         display: inline-block;

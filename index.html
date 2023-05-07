@@ -13,61 +13,69 @@
 <body>
 
     <header>
+        <!-- Navbar & logo -->
         <nav>
             <div class="logo">
                 <img src="img/Logoblanc.png" alt="">
                 <div class="space_white">
-                <a href="index.html">
-                    <li>Nouveau Client</li>
-                </a>
-                <a href="index.html">
-                    <li>Départ Client</li>
-                </a>
-            </div>
+                    <a href="index.html">
+                        <li>Nouveau Client</li>
+                    </a>
+                    <a href="index.html">
+                        <li>Départ Client</li>
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
+
+    <!-- Insertion background & text (postionnement) -->
+
     <div class="insert">
         <div class="text-insert">
-        <p>Accueil nouveau client</p>
+            <p>Accueil nouveau client</p>
+        </div>
     </div>
-    </div>
+
+    <!-- Gestion formulaire -->
 
     <form class="form_config" action="">
+        <div class="dim_form">
+            <div class="champ_form">
+                <p>prénom</p>
+                <label for="firstname">
+                    <input type="text" placeholder="Jean" id="name">
+                </label>
+            </div>
 
-        <div class="champ_form">
-            <p>prénom</p>
-            <label for="firstname">
-                <input type="text" placeholder="Jean" id="name">
-            </label>
+            <div class="champ_form">
+                <p>Nom</p>
+                <label for="lastname">
+                    <input type="text" placeholder="Dujardin" id="surname">
+                </label>
+            </div>
+
+            <div class="champ_form">
+                <p>Nombre de nuit(s)</p>
+                <label for="night">
+                    <input type="number" placeholder="2" id="numNight">
+                </label>
+            </div>
+
+            <div class="champ_form">
+                <p>Type de chambre</p>
+                <label for="typeOfRoom">
+                    <select id="typeOfRoom">
+                        <option value="loft" selected>Loft</option>
+                        <option value="one_person">Chambre 1 personne</option>
+                        <option value="one_person">Chambre 2 personnes</option>
+                        <option value="one_person">Chambre 4 personnes</option>
+                    </select>
+                </label>
+            </div>
         </div>
 
-        <div class="champ_form">
-            <p>Nom</p>
-            <label for="lastname">
-                <input type="text" placeholder="Dujardin" id="surname">
-            </label>
-        </div>
-
-        <div class="champ_form">
-            <p>Nombre de nuit(s)</p>
-            <label for="night">
-                <input type="number" placeholder="2" id="numNight">
-            </label>
-        </div>
-
-        <div class="champ_form">
-            <p>Type de chambre</p>
-            <label for="typeOfRoom">
-                <select id="typeOfRoom">
-                    <option value="loft" selected>Loft</option>
-                    <option value="one_person">Chambre 1 personne</option>
-                    <option value="one_person">Chambre 2 personnes</option>
-                    <option value="one_person">Chambre 4 personnes</option>
-                </select>
-            </label>
-        </div>
-
+        <!-- Bouton enregistrement-->
         <div class="btn_radio">
             <p>Petit déjeuner ?</p>
             <input type="radio" id="breakfast_true" name="choice" value="y" checked>
@@ -82,24 +90,39 @@
     </form>
 
 
-    <form class="form_config" action="">
-        <div class="champ_form">
-            <label for="firstname">
-                <input type="text" placeholder="Jean" id="name">
-            </label>
+    <div class="insert-two">
+        <div class="text-insert-two">
+            <p>Départ client</p>
         </div>
-        <div class="champ_form">
+    </div>
+    <!-- Second formulaire de recherche-->
 
-            <label for="lastname">
-                <input type="text" placeholder="Dujardin" id="surname">
-            </label>
+    <form class="form_config" action="">
+        <div class="dim_form">
+            <div class="champ_form">
+                <p>prénom</p>
+                <label for="firstname">
+                    <input type="text" placeholder="Jean" id="name">
+                </label>
+            </div>
+
+            <div class="champ_form">
+                <p>Nom</p>
+                <label for="lastname">
+                    <input type="text" placeholder="Dujardin" id="surname">
+                </label>
+            </div>
         </div>
+        <!-- Bouton de recherche -->
+
         <div class="buttonBrown">
             <a href="" id="valueRegister"> Enregistrer le client<i class="fa-solid fa-calendar"
                     style="color: #ffffff;"></i></a>
         </div>
     </form>
 
+    <footer>
+    </footer>
     <script src="js/app.js"></script>
 </body>
 
