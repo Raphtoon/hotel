@@ -1,16 +1,143 @@
-nav {
-  background-color: grey;
-  color: white;
+* {
+  box-sizing: border-box;
 }
-nav ul li {
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.logo {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.logo .space_white {
+  font-size: 1.5rem;
+}
+.logo .space_white a {
+  text-decoration: none;
+  color: white;
+  justify-content: space-between;
+  margin: 1rem;
+}
+.logo img {
+  height: 2rem;
+}
+
+nav {
+  background-color: rgb(116, 114, 114);
+  color: white;
+  font-size: 1rem;
+  padding: 1rem;
+  margin: 0;
+  height: 6rem;
+}
+nav li {
   display: inline-block;
 }
-nav ul li a {
+nav li a {
   color: white;
   text-decoration: none;
 }
-nav ul li a:hover {
+nav li a:hover {
   text-decoration: underline;
+}
+
+.insert-two {
+  background-image: url(/img/Lille-Hall.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 50vh;
+  position: relative;
+}
+.insert-two .text-insert {
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.678);
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.insert {
+  background-image: url(/img/Lille-Seminaires.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  position: relative;
+}
+.insert .text-insert {
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.678);
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form_config {
+  background-color: #1C1C1C;
+  color: white;
+  padding: 1rem;
+  align-items: center;
+}
+@media screen and (min-width: 991px) {
+  .form_config {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+}
+.form_config .champ_form {
+  margin: 2rem 0rem;
+}
+@media screen and (min-width: 991px) {
+  .form_config .champ_form {
+    margin: 0.5rem;
+    flex-basis: auto;
+  }
+}
+.form_config .champ_form input,
+.form_config .champ_form select {
+  width: 100%;
+  height: 3rem;
+}
+
+.buttonBrown {
+  background-color: #b99470;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0rem;
+}
+@media screen and (min-width: 991px) {
+  .buttonBrown {
+    margin: 1rem;
+  }
+}
+.buttonBrown #valueRegister {
+  text-decoration: none;
+  color: white;
+}
+
+footer {
+  background-color: #b99470;
+  height: 20vh;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer #printJs {
+  color: whitesmoke;
 }
 
 /*# sourceMappingURL=main.css.map */
