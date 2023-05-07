@@ -24,6 +24,27 @@
     }
 }
 
+nav {
+    background-color: v.$color_Primary;
+    color: white;
+    font-size: 1rem;
+    padding: 1rem;
+    margin: 0;
+    height: 6rem;
+    li {
+        display: inline-block;
+
+        a {
+            color: white;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
 .insert-two {
     background-image: url(/img/Lille-Hall.jpg);
     background-position: center;
@@ -62,8 +83,19 @@
     background-color: #1C1C1C;
     color: white;
     padding: 1rem;
+    align-items: center;
+
+    @media screen and (min-width: v.$md-breakpoint) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
     .champ_form {
+        @media screen and (min-width: v.$md-breakpoint) {
+            margin: 1rem;
+        }
 
         input,
         select {
@@ -73,40 +105,24 @@
     }
 }
 
-
 .buttonBrown {
-    background-color: #b99470;
-    margin: 1rem 0px;
+    @media screen and (min-width: v.$md-breakpoint) {
+        margin: 1rem;
+    }
+
+    background-color: v.$color_button_footer;
     padding: 1rem;
     display: flex;
     justify-content: center;
-    align-items: center;
-
+    margin: 1.5rem 0rem;
     #valueRegister {
         text-decoration: none;
         color: white;
     }
-
 }
 
-nav {
-    background-color: v.$color_Primary;
-    color: white;
-    font-size: 1rem;
+footer{
+    background-color: v.$color_button_footer;
+    height:  20vh;
     padding: 1rem;
-    margin: 0;
-    height: 6rem;
-
-    li {
-        display: inline-block;
-
-        a {
-            color: white;
-            text-decoration: none;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
 }
