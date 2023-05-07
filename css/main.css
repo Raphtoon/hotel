@@ -52,6 +52,7 @@ nav li a:hover {
 .insert-two {
   background-image: url(/img/Lille-Hall.jpg);
   background-position: center;
+  background-size: cover;
   height: 50vh;
   position: relative;
 }
@@ -67,6 +68,7 @@ nav li a:hover {
 
 .insert {
   background-image: url(/img/Lille-Seminaires.jpg);
+  background-size: cover;
   background-position: center;
   height: 50vh;
   position: relative;
@@ -90,14 +92,17 @@ nav li a:hover {
 @media screen and (min-width: 991px) {
   .form_config {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
   }
 }
+.form_config .champ_form {
+  margin: 2rem 0rem;
+}
 @media screen and (min-width: 991px) {
   .form_config .champ_form {
-    margin: 1rem;
+    margin: 0.5rem;
+    flex-basis: auto;
   }
 }
 .form_config .champ_form input,
@@ -127,6 +132,12 @@ footer {
   background-color: #b99470;
   height: 20vh;
   padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer #printJs {
+  color: whitesmoke;
 }
 
 /*# sourceMappingURL=main.css.map */
