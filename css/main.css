@@ -123,7 +123,7 @@ nav li a:hover {
     margin: 1rem;
   }
 }
-.buttonBrown #valueRegister {
+.buttonBrown #valueRegister, .buttonBrown #valueSearch {
   text-decoration: none;
   color: white;
 }

@@ -18,10 +18,10 @@
             <div class="logo">
                 <img src="img/Logoblanc.png" alt="">
                 <div class="space_white">
-                    <a href="index.html">
+                    <a href="#first_form">
                         <li>Nouveau Client</li>
                     </a>
-                    <a href="index.html">
+                    <a href="#scnd_form">
                         <li>Départ Client</li>
                     </a>
                 </div>
@@ -39,8 +39,8 @@
 
     <!-- Gestion formulaire -->
 
-    <form class="form_config" action="">
-        <div class="champ_form">
+    <form id="first_form" class="form_config" action="">
+        <div  class="champ_form">
             <label for="firstname">prénom
                 <input type="text" placeholder="Jean" id="name">
             </label>
@@ -92,21 +92,21 @@
     </div>
     <!-- Second formulaire de recherche-->
 
-    <form class="form_config" action="">
+    <form id="scnd_form" class="form_config" action="">
         <div class="champ_form">
-            <label for="firstname">prénom
-                <input type="text" placeholder="Jean" id="name">
+            <label for="firstname_search">prénom
+                <input type="text" placeholder="Jean" id="firstname_search">
             </label>
         </div>
         <div class="champ_form">
-            <label for="lastname">Nom
-                <input type="text" placeholder="Dujardin" id="surname">
+            <label for="lastname_search">Nom
+                <input type="text" placeholder="Dujardin" id="lastname_search">
             </label>
         </div>
 
         <!-- Bouton enregistrement-->
         <div class="buttonBrown">
-            <a href="" id="valueRegister"> Enregistrer le client <i class="fa-solid fa-calendar"
+            <a href="" id="valueSearch"> Enregistrer le client <i class="fa-solid fa-calendar"
                     style="color: #ffffff;"></i></a>
         </div>
     </form>
