@@ -1,29 +1,32 @@
 //sass sass/main.scss ./css/main.css /
 
 @use "reset";
-$color_Primary : grey;
+@use "variables" as v;
 
 .logo {
     align-items: center;
     display: flex;
     justify-content: space-between;
-
     img {
-        width: 5rem;
-        height: auto;
+        height: 4rem;
     }
 }
 
 
-.insert{
+.insert {
     background-image: url(/img/Lille-Seminaires.jpg);
-    background-position: 2rem;
-    height: 50rem;
-    p {
-        text-align: center;
-
+    background-position: center;
+    height: 50vh;
+    position: relative;
+    display: flex;
+    .text-insert {
+        background-color: white;
+        position:absolute;
+        top: 50%;
+        bottom: 50%;
     }
 }
+
 .form_config {
     background-color: #1C1C1C;
     color: white;
@@ -31,10 +34,10 @@ $color_Primary : grey;
 
 .champ_form {
     margin: 0.2rem;
-    padding: 1rem;
+    padding: 3rem;
 
     input {
-        width: 80%;
+        width: 60%;
         height: 3rem;
     }
 }
@@ -60,7 +63,7 @@ $color_Primary : grey;
 }
 
 nav {
-    background-color: $color_Primary;
+    background-color: v.$color_Primary;
     color: white;
     font-size: 1rem;
     margin: 0;

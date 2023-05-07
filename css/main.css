@@ -17,17 +17,21 @@ body {
   justify-content: space-between;
 }
 .logo img {
-  width: 5rem;
-  height: auto;
+  height: 4rem;
 }
 
 .insert {
   background-image: url(/img/Lille-Seminaires.jpg);
-  background-position: 2rem;
-  height: 50rem;
+  background-position: center;
+  height: 50vh;
+  position: relative;
+  display: flex;
 }
-.insert p {
-  text-align: center;
+.insert .text-insert {
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
 }
 
 .form_config {
@@ -37,10 +41,10 @@ body {
 
 .champ_form {
   margin: 0.2rem;
-  padding: 1rem;
+  padding: 3rem;
 }
 .champ_form input {
-  width: 80%;
+  width: 60%;
   height: 3rem;
 }
 
