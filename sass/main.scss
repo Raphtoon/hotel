@@ -29,15 +29,14 @@
     background-position: center;
     height: 50vh;
     position: relative;
-
-    .text-insert-two {
-        background-color: rgba(255, 255, 255, 0.678);
+    .text-insert {
         padding: 1rem;
+        background-color: rgba(255, 255, 255, 0.678);
         position: absolute;
         text-align: center;
         top: 50%;
         left: 50%;
-
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -54,6 +53,7 @@
         text-align: center;
         top: 50%;
         left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -72,13 +72,12 @@
 
 .buttonBrown {
     background-color: #b99470;
+    margin: 1rem 0px;
     padding: 1rem;
-    margin: 1rem;
-    width: 80%;
     display: flex;
-
-    a {
-        justify-content: center;
+    justify-content: center;
+    align-items: center;
+    #valueRegister {
         text-decoration: none;
         color: white;
     }
@@ -95,11 +94,9 @@ nav {
 
     li {
         display: inline-block;
-
         a {
             color: white;
             text-decoration: none;
-
             &:hover {
                 text-decoration: underline;
             }
