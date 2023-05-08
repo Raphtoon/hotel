@@ -51,7 +51,7 @@ clickForRegister.addEventListener("click", (e) => {
     const breakfast = storage_input[3].value;//valeur d'input petit déjeuner ? 
 
     // print des valeurs actuelles
-    alert(`Résérvation au nom : ${storage_input[0].value} ${storage_input[1].value} ${storage_input[2].value} ${selectedValue} ${storage_input[3].value} `)
+    alert(`Résérvation au nom : ${storage_input[0].value} ${storage_input[1].value} \n pour ${storage_input[2].value} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${storage_input[3].value} `)
 
     // showAlert(); Tentative d'affichage d'un message pdt 3 sec
     // Création d'un nouveau client
@@ -59,3 +59,5 @@ clickForRegister.addEventListener("click", (e) => {
     customerDirectory.push(customers);
     console.table(customerDirectory)
 });
+
+console.table(customerDirectory)
