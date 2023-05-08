@@ -1,3 +1,6 @@
+//Creation du tableau de stockage des clients
+let customerDirectory = [];
+
 // Creation class
 class Customer {
     constructor(firstname, lastname, nbr_night, typeOfRoom, breakfast) {
@@ -9,37 +12,50 @@ class Customer {
     }
 };
 
-
-function createCustomer() {
-    // Obtenir les informations d'enregistrements
-    const nameOfCustomer = storage_input[0];//valeur d'input name
-    const lastnameOfCustomer = storage_input[1];//valeur d'input lastname
-    const number_night = storage_input[2];//valeur d'input nombre de nuit
-    const typeOfRoom = storage_input[3];//valeur d'input type de chambre
-    const breakfast = storage_input[4];//valeur d'input petit déjeuner ? 
-
-    // Création d'un nouveau client
-    const customers = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
-
-    return customers;
-};
-
 // Stockage des valeurs des inputs
 let storage_input = document.querySelectorAll("input");
 // variable avec l'id du bouton enregistement
 let clickForRegister = document.querySelector("#valueRegister");
 // variable avec l'id du bouton rechercher
 let clickForSearch = document.querySelector("#valueSearch");
-
-// storage_input.addEventListener("click" () =>{
-// })
+let selectedValue;
 
 
-clickForRegister.addEventListener("click", () => {
-    if (storage_input[0,1,2,3].value) {
-        alert(`Saisie utilisateur : ${storage_input[0].value} ${storage_input[1].value} ${storage_input[2].value} ${storage_input[3].value} `)// la 4eme valeur print un Y // Recuperation de la valuer de l'input
-    } else {`Merci de remplir tout les champs`}
+function showAlert() {
+    // Automatically close the alert message after 5 seconds
+    let timeoutId = setTimeout(() => {
+        alert('Création du fichier client ...');
+    }, 5000);
+
+    // Cancel the timeout if the user closes the alert message manually
+    window.addEventListener('click', () => {
+        clearTimeout(timeoutId);
+    });
 }
-);
 
-console.log(storage_input)
+// Sélectionner l'élément select par son ID // PROBLEME DE STOCKAGE A REGLER
+let selectRoom = document.querySelector("#typeOfRoom");
+selectRoom.addEventListener("change", () => {
+    // Assignation a selected value
+    selectedValue = selectRoom.value;
+});
+
+
+clickForRegister.addEventListener("click", (e) => {
+    e.preventDefault();
+    // Obtenir les informations d'enregistrements
+    const nameOfCustomer = storage_input[0].value;//valeur d'input name
+    const lastnameOfCustomer = storage_input[1].value;//valeur d'input lastname
+    const number_night = storage_input[2].value;//valeur d'input nombre de nuit
+    const typeOfRoom = selectedValue;//valeur d'input type de chambre ??
+    const breakfast = storage_input[3].value;//valeur d'input petit déjeuner ? 
+
+    // print des valeurs actuelles
+    alert(`Résérvation au nom : ${storage_input[0].value} ${storage_input[1].value} ${storage_input[2].value} ${selectedValue} ${storage_input[3].value} `)
+
+    // showAlert(); Tentative d'affichage d'un message pdt 3 sec
+    // Création d'un nouveau client
+    const customers = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
+    customerDirectory.push(customers);
+    console.table(customerDirectory)
+});
