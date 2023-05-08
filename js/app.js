@@ -5,8 +5,6 @@ class Customer {
             this.lastname = lastname,
             this.nbr_night = Number(nbr_night),
             this.typeOfRoom = Number(typeOfRoom),
-            this.nbr_night = Number(nbr_night),
-            this.typeOfRoom = Number(typeOfRoom),
             this.breakfast = breakfast
     }
 };
