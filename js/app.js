@@ -6,8 +6,8 @@ class Customer {
     constructor(firstname, lastname, nbr_night, typeOfRoom, breakfast) {
         this.firstname = firstname,
             this.lastname = lastname,
-            this.nbr_night = nbr_night,
-            this.typeOfRoom = typeOfRoom,
+            this.nbr_night = Number(nbr_night),
+            this.typeOfRoom = Number(typeOfRoom),
             this.breakfast = breakfast
     }
 };
@@ -18,20 +18,21 @@ let storage_input = document.querySelectorAll("input");
 let clickForRegister = document.querySelector("#valueRegister");
 // variable avec l'id du bouton rechercher
 let clickForSearch = document.querySelector("#valueSearch");
-let selectedValue;
+
+let selectedValue = Number();
+
+function roomPrice(typeRoom, time) {
+    // Calculer la durée en minutes
+    const pricettl = typeRoom * time;
+
+    return pricettl;
+};
+
+function displayPrice(price) {
+    return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(number);
+};
 
 
-function showAlert() {
-    // Automatically close the alert message after 5 seconds
-    let timeoutId = setTimeout(() => {
-        alert('Création du fichier client ...');
-    }, 5000);
-
-    // Cancel the timeout if the user closes the alert message manually
-    window.addEventListener('click', () => {
-        clearTimeout(timeoutId);
-    });
-}
 
 // Sélectionner l'élément select par son ID // PROBLEME DE STOCKAGE A REGLER
 let selectRoom = document.querySelector("#typeOfRoom");
@@ -61,3 +62,21 @@ clickForRegister.addEventListener("click", (e) => {
 });
 
 console.table(customerDirectory)
+
+
+clickForSearch.addEventListener("click", (e) => {
+    const person = customerDirectory.find(person => person.firstname === storage_input[4].value && person.lastname === storage_input[5].value);
+    alert("Personne trouvé.")
+
+    if (person) {
+        const price = roomPrice(person.nbr_night , person.typeOfRoom)
+        alert(`Le prix à payer est de ${displayPrice(price)}`);
+
+        const index = customerDirectory.indexOf(person);
+        customerDirectory.splice(index, 1);
+        console.table(price);
+    }else{
+        alert("Client non trouvé.")
+    }
+
+})
