@@ -65,7 +65,7 @@ clickForSearch.addEventListener("click", (e) => {
     // Annuler le reload de la page
     e.preventDefault()
     // On recherche le client dans le tableau via son nom / prenom
-    const customers = customerDirectory.find(customers => customers.firstname.toLowerCase() === storage_input[4].value && customers.lastname.toLowerCase() === storage_input[5].value);
+    const customers = customerDirectory.find(customers => customers.firstname.toLowerCase() === storage_input[4].value.toLowerCase() && customers.lastname.toLowerCase() === storage_input[5].value.toLowerCase());
     // S'il est find on calcul son nombre de nuit * son prix de chambre
     if (customers) {
         alert("Personne trouvé.")
