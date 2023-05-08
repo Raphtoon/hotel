@@ -18,8 +18,10 @@ let storage_input = document.querySelectorAll("input");
 let clickForRegister = document.querySelector("#valueRegister");
 // variable avec l'id du bouton rechercher
 let clickForSearch = document.querySelector("#valueSearch");
+//Affichage dans le footer
+let displayHtml = document.querySelector("#printJs");
 
-let selectedValue = Number();
+let selectedValue = 189;
 
 function roomPrice(typeRoom, time) {
     // Calculer la durée en minutes
@@ -29,7 +31,7 @@ function roomPrice(typeRoom, time) {
 };
 
 function displayPrice(price) {
-    return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(number);
+    return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(price);
 };
 
 
@@ -61,22 +63,26 @@ clickForRegister.addEventListener("click", (e) => {
     console.table(customerDirectory)
 });
 
-console.table(customerDirectory)
 
 
 clickForSearch.addEventListener("click", (e) => {
-    const person = customerDirectory.find(person => person.firstname === storage_input[4].value && person.lastname === storage_input[5].value);
+    e.preventDefault()
+    const customers = customerDirectory.find(customers => customers.firstname === storage_input[4].value && customers.lastname === storage_input[5].value);
     alert("Personne trouvé.")
+    if (clickForSearch) {
+        if (customers) {
+            const customers = roomPrice(customers.nbr_night, customers.typeOfRoom)
+            // displayHtml.textContent = 
+            alert(`Le prix à payer est de ${displayPrice(price)}`);
 
-    if (person) {
-        const price = roomPrice(person.nbr_night , person.typeOfRoom)
-        alert(`Le prix à payer est de ${displayPrice(price)}`);
-
-        const index = customerDirectory.indexOf(person);
-        customerDirectory.splice(index, 1);
-        console.table(price);
-    }else{
-        alert("Client non trouvé.")
+            const index = customerDirectory.indexOf(customers);
+            customerDirectory.splice(index, 1);
+            console.table(customerDirectory);
+            return;
+        } else {
+            alert("Client non trouvé")
+            // displayHtml.textContent = ("Client non trouvé.")
+            return;
+        }
     }
-
 })
