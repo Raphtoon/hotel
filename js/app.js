@@ -22,17 +22,17 @@ let displayHtml = document.querySelector("#printJs");
 // Valeur pas défaut du selected suite a des pb d'ajout de la valeur si le menu n'est pas ouvert.
 let selectedValue = 189;
 
+
 function roomPrice(typeRoom, time) {
-    // Calculer la durée en minutes
+    // Calculer la durée du séjour (prix de la chambre* nombre de nuit)
     const pricettl = typeRoom * time;
     return pricettl;
 };
 
+// Affichage du prix sous format €
 function displayPrice(price) {
     return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(price);
 };
-
-
 
 // Sélectionner l'élément select par son ID // PROBLEME DE STOCKAGE A REGLER
 let selectRoom = document.querySelector("#typeOfRoom");
@@ -62,17 +62,22 @@ clickForRegister.addEventListener("click", (e) => {
 
 
 clickForSearch.addEventListener("click", (e) => {
+    // Annuler le reload de la page
     e.preventDefault()
+    // On recherche le client dans le tableau via son nom / prenom
     const customers = customerDirectory.find(customers => customers.firstname.toLowerCase() === storage_input[4].value && customers.lastname.toLowerCase() === storage_input[5].value);
+    // S'il est find on calcul son nombre de nuit * son prix de chambre
     if (customers) {
         alert("Personne trouvé.")
         const price = roomPrice(customers.typeOfRoom, customers.nbr_night)
         alert(`Le prix à payer est de ${displayPrice(price)}`);
-
+        // On recup son ID dans l'array pour le delete par la suite
         const index = customerDirectory.indexOf(customers);
+        // Delete du client parti
         customerDirectory.splice(index, 1);
         console.table(customerDirectory);
         return;
+        // Si client non trouvé
     } else {
         alert("Client non trouvé")
         return;
