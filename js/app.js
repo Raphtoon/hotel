@@ -91,7 +91,6 @@ clickForSearch.addEventListener("click", (e) => {
     let input_lastname_search = document.querySelector("#lastname_search");
 
     let customerFound = false;
-    console.table(customerDirectory)
 
     for (let i = 0; i < customerDirectory.length; i++) {
         let customers_actual = customerDirectory[i];
@@ -99,6 +98,7 @@ clickForSearch.addEventListener("click", (e) => {
         // On recherche le client dans le tableau via son nom / prenom
         if (customers_actual.firstname === input_name_search.value.toLowerCase() && customers_actual.lastname === input_lastname_search.value.toLowerCase()) {
             customerFound = true;
+            console.table(customerDirectory)
             // client trouvé, on calcul son nombre de nuit * son prix de chambre
             const price = roomPrice(customers_actual.typeOfRoom, customers_actual.nbr_night);
             displayHtml.textContent = (`Le prix à payer pour le séjour de ${customers_actual.firstname} ${customers_actual.lastname} est de ${displayPrice(price)}`);
