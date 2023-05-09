@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/2c660d7e06.js" crossorigin="anonymous"></script>
     <title>Olivarius</title>
 </head>
 
@@ -14,19 +15,19 @@
     <header>
         <!-- Navbar & logo -->
         <nav>
-            <h2>
-                Olivarius
-                <p>APART HOTEL</p>
-            </h2>
-            <a href="index.html">
-                <li>Nouveau Client</li>
-            </a>
-            <a href="index.html">
-                <li>Départ Client</li>
-            </a>
+            <div class="logo">
+                <img src="img/Logoblanc.png" alt="">
+                <div class="space_white">
+                    <a href="#first_form">
+                        <li>Nouveau Client</li>
+                    </a>
+                    <a href="#scnd_form">
+                        <li>Départ Client</li>
+                    </a>
+                </div>
+            </div>
         </nav>
     </header>
-</head>
 
     <!-- Insertion background & text (postionnement) -->
 
@@ -76,6 +77,7 @@
             <label for="breakfast_true">Oui</label>
             <input type="radio" id="breakfast_false" name="choice" value="Non">
             <label for="breakfast_false">Non</label>
+
         </div>
         <div class="buttonBrown">
             <a href="" id="valueRegister"> Enregistrer le client <i class="fa-solid fa-calendar"
@@ -110,6 +112,10 @@
         </div>
     </form>
 
+    <footer>
+        <p id="printJs"></p>
+    </footer>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
