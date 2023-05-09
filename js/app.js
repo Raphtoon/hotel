@@ -77,7 +77,7 @@ clickForSearch.addEventListener("click", (e) => {
     // Stockage des valeurs lastname_search
     let input_lastname_search = document.querySelector("#lastname_search");
 
-    customerFound = false;
+    let customerFound = false;
     console.table(customerDirectory)
 
     for (let i = 0; i < customerDirectory.length; i++) {
