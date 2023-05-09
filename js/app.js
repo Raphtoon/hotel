@@ -11,8 +11,22 @@ class Customer {
 
 //Creation du tableau de stockage des clients
 let customerDirectory = [];
-// Stockage des valeurs des inputs
-let storage_input = document.querySelectorAll("input");
+// Stockage de la valeur name
+let input_name = document.querySelector("#name");
+// Stockage de la valeur input_lastname
+let input_lastname = document.querySelector("#surname");
+// Stockage de la valeur numnight
+let input_numnight = document.querySelector("#numNight");
+// Stockage des valeurs typeOfRoom
+// let input_typeRoom = document.querySelector("#typeOfRoom");
+// Stockage des valeurs breakfast_true
+let input_dej = document.querySelector("#breakfast_true");
+// Stockage des valeurs breakfast_false
+let input_dej_false = document.querySelector("#breakfast_false");
+// Stockage des valeurs firstname_search
+let input_name_search = document.querySelector("#firstname_search");
+// Stockage des valeurs lastname_search
+let input_lastname_search = document.querySelector("#lastname_search");
 // variable avec l'id du bouton enregistement
 let clickForRegister = document.querySelector("#valueRegister");
 // variable avec l'id du bouton rechercher
@@ -44,14 +58,14 @@ selectRoom.addEventListener("change", () => {
 clickForRegister.addEventListener("click", (e) => {
     e.preventDefault();
     // Obtenir les informations d'enregistrements
-    const nameOfCustomer = storage_input[0].value.toLowerCase();//valeur d'input name
-    const lastnameOfCustomer = storage_input[1].value.toLowerCase();//valeur d'input lastname
-    const number_night = storage_input[2].value;//valeur d'input nombre de nuit
+    const nameOfCustomer = input_name.value.toLowerCase();//valeur d'input name
+    const lastnameOfCustomer = input_lastname.value.toLowerCase();//valeur d'input lastname
+    const number_night = input_numnight.value;//valeur d'input nombre de nuit
     const typeOfRoom = selectedValue;//valeur d'input type de chambre ??
-    const breakfast = storage_input[3].value;//valeur d'input petit déjeuner ? 
+    const breakfast = input_dej.value;//valeur d'input petit déjeuner ? 
 
     // print des valeurs actuelles
-    alert(`Résérvation au nom : ${storage_input[0].value} ${storage_input[1].value} \n pour ${storage_input[2].value} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${storage_input[3].value} `)
+    alert(`Résérvation au nom : ${input_name.value} ${input_lastname.value} \n pour ${input_numnight.value} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${input_dej.value} `)
 
     // Création d'un nouveau client
     const customers = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
@@ -65,14 +79,14 @@ clickForSearch.addEventListener("click", (e) => {
     // Annuler le reload de la page
     e.preventDefault()
     // On recherche le client dans le tableau via son nom / prenom
-    const customers_actual = customerDirectory.find(customers => customers.firstname.toLowerCase() === storage_input[4].value.toLowerCase() && customers.lastname.toLowerCase() === storage_input[5].value.toLowerCase());
+    const customers_actual = customerDirectory.find(customers => customers.input_name_search.toLowerCase() === input_name_search.value.toLowerCase() && customers.lastname.toLowerCase() === input_lastname_search.value.toLowerCase());
     // S'il est find on calcul son nombre de nuit * son prix de chambre
     if (customers_actual) {
         alert("Personne trouvé.")
-        const price = roomPrice(customers.typeOfRoom, customers.nbr_night)
+        const price = roomPrice(customers_actual.typeOfRoom, customers_actual.nbr_night)
         alert(`Le prix à payer est de ${displayPrice(price)}`);
         // On recup son ID dans l'array pour le delete par la suite
-        const index = customerDirectory.indexOf(customers);
+        const index = customerDirectory.indexOf(customers_actual);
         // Delete du client parti
         customerDirectory.splice(index, 1);
         console.table(customerDirectory);
