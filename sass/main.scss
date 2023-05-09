@@ -46,7 +46,7 @@ nav {
 }
 
 .hr_style {
-    height: 1px;
+    height: 0.3rem;
     background-color: v.$color_button_footer;
     margin: 1.5rem;
 }
@@ -58,15 +58,17 @@ nav {
     height: 50vh;
     position: relative;
 
-    .text-insert {
-        padding: 1rem;
-        background-color: v.$color_background;
-        position: absolute;
-        text-align: center;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+
+}
+
+.text-insert {
+    padding: 1rem;
+    background-color: v.$color_background;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .insert {
@@ -75,16 +77,6 @@ nav {
     background-position: center;
     height: 50vh;
     position: relative;
-
-    .text-insert {
-        padding: 1rem;
-        background-color: v.$color_background;
-        position: absolute;
-        text-align: center;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
 }
 
 .form_config {
@@ -104,7 +96,6 @@ nav {
 
         @media screen and (min-width: v.$md-breakpoint) {
             margin: 0.5rem;
-            flex-basis: auto;
         }
 
         input,
