@@ -49,6 +49,12 @@ nav li a:hover {
   text-decoration: underline;
 }
 
+.hr_style {
+  height: 1px;
+  background-color: #b99470;
+  margin: 1.5rem;
+}
+
 .insert-two {
   background-image: url(/img/Lille-Hall.jpg);
   background-position: center;
