@@ -5,7 +5,7 @@ class Customer {
             this.lastname = lastname,
             this.nbr_night = Number(nbr_night),
             this.typeOfRoom = Number(typeOfRoom),
-            this.breakfast = breakfast = "Oui"
+            this.breakfast = breakfast;
     }
 };
 
@@ -30,9 +30,23 @@ let displayHtml = document.querySelector("#printJs");
 // Valeur pas défaut du selected suite a des pb d'ajout de la valeur si le menu n'est pas ouvert.
 let selectedValue = 189;
 
+
+function checkOrNot() {
+    if (input_dej.checked) {
+        answer = true;
+    } else {
+        answer = false
+    } return answer;
+};
+
 function roomPrice(typeRoom, time) {
-    // Calculer la durée du séjour (prix de la chambre* nombre de nuit)
-    const pricettl = typeRoom * time;
+    if (checkOrNot()) {
+        let price_dej = time * 7
+        pricettl = (typeRoom * time) + price_dej;
+    } else {
+        // Calculer la durée du séjour (prix de la chambre* nombre de nuit)
+        pricettl = typeRoom * time;
+    }
     return pricettl;
 };
 
@@ -50,12 +64,13 @@ selectRoom.addEventListener("change", () => {
 
 clickForRegister.addEventListener("click", (e) => {
     e.preventDefault();
+
     // Obtenir les informations d'enregistrements
     const nameOfCustomer = input_name.value.toLowerCase();//valeur d'input name
     const lastnameOfCustomer = input_lastname.value.toLowerCase();//valeur d'input lastname
     const number_night = input_numnight.value;//valeur d'input nombre de nuit
     const typeOfRoom = selectedValue;//valeur d'input type de chambre ??
-    const breakfast = input_dej.value;
+    let breakfast = checkOrNot();
 
     // print des valeurs actuelles
     alert(`Résérvation au nom : ${nameOfCustomer} ${lastnameOfCustomer} \n pour ${number_night} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${breakfast} `)
@@ -65,8 +80,6 @@ clickForRegister.addEventListener("click", (e) => {
     customerDirectory.push(customers_add);
     console.table(customerDirectory)
 });
-
-
 
 clickForSearch.addEventListener("click", (e) => {
     // Annuler le reload de la page
