@@ -55,7 +55,7 @@ function displayPrice(prix) {
     return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(prix);
 };
 
-// Sélectionner l'élément select par son ID // PROBLEME DE STOCKAGE A REGLER
+// Sélectionner l'élément select par son ID
 let selectRoom = document.querySelector("#typeOfRoom");
 selectRoom.addEventListener("change", () => {
     // Assignation a selected value
