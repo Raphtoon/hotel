@@ -5,7 +5,7 @@ class Customer {
             this.lastname = lastname,
             this.nbr_night = Number(nbr_night),
             this.typeOfRoom = Number(typeOfRoom),
-            this.breakfast = breakfast
+            this.breakfast = breakfast = "Oui"
     }
 };
 
@@ -17,18 +17,10 @@ let input_name = document.querySelector("#name");
 let input_lastname = document.querySelector("#surname");
 // Stockage de la valeur numnight
 let input_numnight = document.querySelector("#numNight");
-// Stockage des valeurs typeOfRoom
-// let input_typeRoom = document.querySelector("#typeOfRoom");
 // Stockage des valeurs breakfast_true
 let input_dej = document.querySelector("#breakfast_true");
 // Stockage des valeurs breakfast_false
 let input_dej_false = document.querySelector("#breakfast_false");
-
-// Stockage des valeurs firstname_search
-// let input_name_search = document.querySelector("#firstname_search");
-// Stockage des valeurs lastname_search
-// let input_lastname_search = document.querySelector("#lastname_search");
-
 // variable avec l'id du bouton enregistement
 let clickForRegister = document.querySelector("#valueRegister");
 // variable avec l'id du bouton rechercher
@@ -37,7 +29,6 @@ let clickForSearch = document.querySelector("#valueSearch");
 let displayHtml = document.querySelector("#printJs");
 // Valeur pas défaut du selected suite a des pb d'ajout de la valeur si le menu n'est pas ouvert.
 let selectedValue = 189;
-
 
 function roomPrice(typeRoom, time) {
     // Calculer la durée du séjour (prix de la chambre* nombre de nuit)
@@ -64,10 +55,10 @@ clickForRegister.addEventListener("click", (e) => {
     const lastnameOfCustomer = input_lastname.value.toLowerCase();//valeur d'input lastname
     const number_night = input_numnight.value;//valeur d'input nombre de nuit
     const typeOfRoom = selectedValue;//valeur d'input type de chambre ??
-    const breakfast = input_dej.value;//valeur d'input petit déjeuner ? 
+    const breakfast = input_dej.value;
 
     // print des valeurs actuelles
-    alert(`Résérvation au nom : ${nameOfCustomer} ${lastnameOfCustomer} \n pour ${number_night} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${breakfast} `)
+    displayHtml.textContent = (`Résérvation au nom : ${nameOfCustomer} ${lastnameOfCustomer} \n pour ${number_night} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${breakfast} `)
 
     // Création d'un nouveau client
     const customers_add = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
@@ -94,22 +85,19 @@ clickForSearch.addEventListener("click", (e) => {
         let customers_actual = customerDirectory[i];
 
         // On recherche le client dans le tableau via son nom / prenom
-        if (customers_actual.firstname === input_name_search.value && customers_actual.lastname === input_lastname_search.value) {
+        if (customers_actual.firstname === input_name_search.value.toLowerCase() && customers_actual.lastname === input_lastname_search.value.toLowerCase()) {
             customerFound = true;
             // client trouvé, on calcul son nombre de nuit * son prix de chambre
-            alert(`Personne trouvée.`)
             const price = roomPrice(customers_actual.typeOfRoom, customers_actual.nbr_night);
-            displayHtml.textContent = (`Le prix à payer est de ${displayPrice(price)}`);
+            displayHtml.textContent = (`Le prix à payer pour le séjour de ${customers_actual.firstname} ${customers_actual.lastname} est de ${displayPrice(price)}`);
             // On récupère son ID dans l'array pour le supprimer par la suite
             const index = customerDirectory.indexOf(customers_actual);
             // Suppression du client parti
             customerDirectory.splice(index, 1);
-            console.table(customerDirectory);
-            break;
         }
-    }
-    if (!customerFound) {
-        // si aucun client trouvé
-        displayHtml.textContent = "Client non trouvé";
+        if (!customerFound) {
+            // si aucun client trouvé
+            displayHtml.textContent = "Client Introuvable";
+        }
     }
 });
