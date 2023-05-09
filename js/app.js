@@ -5,14 +5,22 @@ class Customer {
             this.lastname = lastname,
             this.nbr_night = Number(nbr_night),
             this.typeOfRoom = Number(typeOfRoom),
-            this.breakfast = breakfast
+            this.breakfast = breakfast;
     }
 };
 
 //Creation du tableau de stockage des clients
 let customerDirectory = [];
-// Stockage des valeurs des inputs
-let storage_input = document.querySelectorAll("input");
+// Stockage de la valeur name
+let input_name = document.querySelector("#name");
+// Stockage de la valeur input_lastname
+let input_lastname = document.querySelector("#surname");
+// Stockage de la valeur numnight
+let input_numnight = document.querySelector("#numNight");
+// Stockage des valeurs breakfast_true
+let input_dej = document.querySelector("#breakfast_true");
+// Stockage des valeurs breakfast_false
+let input_dej_false = document.querySelector("#breakfast_false");
 // variable avec l'id du bouton enregistement
 let clickForRegister = document.querySelector("#valueRegister");
 // variable avec l'id du bouton rechercher
@@ -22,17 +30,30 @@ let displayHtml = document.querySelector("#printJs");
 // Valeur pas défaut du selected suite a des pb d'ajout de la valeur si le menu n'est pas ouvert.
 let selectedValue = 189;
 
+
+function checkOrNot() {
+    if (input_dej.checked) {
+        answer = true;
+    } else {
+        answer = false
+    } return answer;
+};
+
 function roomPrice(typeRoom, time) {
-    // Calculer la durée en minutes
-    const pricettl = typeRoom * time;
+    if (checkOrNot()) {
+        let price_dej = time * 7
+        pricettl = (typeRoom * time) + price_dej;
+    } else {
+        // Calculer la durée du séjour (prix de la chambre* nombre de nuit)
+        pricettl = typeRoom * time;
+    }
     return pricettl;
 };
 
-function displayPrice(price) {
-    return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(price);
+// Affichage du prix sous format €
+function displayPrice(prix) {
+    return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(prix);
 };
-
-
 
 // Sélectionner l'élément select par son ID // PROBLEME DE STOCKAGE A REGLER
 let selectRoom = document.querySelector("#typeOfRoom");
@@ -41,41 +62,54 @@ selectRoom.addEventListener("change", () => {
     selectedValue = selectRoom.value;
 });
 
-
 clickForRegister.addEventListener("click", (e) => {
     e.preventDefault();
+
     // Obtenir les informations d'enregistrements
-    const nameOfCustomer = storage_input[0].value.toLowerCase();//valeur d'input name
-    const lastnameOfCustomer = storage_input[1].value.toLowerCase();//valeur d'input lastname
-    const number_night = storage_input[2].value;//valeur d'input nombre de nuit
+    const nameOfCustomer = input_name.value.toLowerCase();//valeur d'input name
+    const lastnameOfCustomer = input_lastname.value.toLowerCase();//valeur d'input lastname
+    const number_night = input_numnight.value;//valeur d'input nombre de nuit
     const typeOfRoom = selectedValue;//valeur d'input type de chambre ??
-    const breakfast = storage_input[3].value;//valeur d'input petit déjeuner ? 
+    let breakfast = checkOrNot();
 
     // print des valeurs actuelles
-    alert(`Résérvation au nom : ${storage_input[0].value} ${storage_input[1].value} \n pour ${storage_input[2].value} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${storage_input[3].value} `)
+    alert(`Résérvation au nom : ${nameOfCustomer} ${lastnameOfCustomer} \n pour ${number_night} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${breakfast} `)
 
     // Création d'un nouveau client
-    const customers = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
-    customerDirectory.push(customers);
+    const customers_add = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
+    customerDirectory.push(customers_add);
     console.table(customerDirectory)
 });
 
-
-
 clickForSearch.addEventListener("click", (e) => {
-    e.preventDefault()
-    const customers = customerDirectory.find(customers => customers.firstname.toLowerCase() === storage_input[4].value && customers.lastname.toLowerCase() === storage_input[5].value);
-    if (customers) {
-        alert("Personne trouvé.")
-        const price = roomPrice(customers.typeOfRoom, customers.nbr_night)
-        alert(`Le prix à payer est de ${displayPrice(price)}`);
+    // Annuler le reload de la page
+    e.preventDefault();
 
-        const index = customerDirectory.indexOf(customers);
-        customerDirectory.splice(index, 1);
-        console.table(customerDirectory);
-        return;
-    } else {
-        alert("Client non trouvé")
-        return;
+    // Stockage des valeurs firstname_search
+    let input_name_search = document.querySelector("#firstname_search");
+    // Stockage des valeurs lastname_search
+    let input_lastname_search = document.querySelector("#lastname_search");
+
+    let customerFound = false;
+
+    for (let i = 0; i < customerDirectory.length; i++) {
+        let customers_actual = customerDirectory[i];
+
+        // On recherche le client dans le tableau via son nom / prenom
+        if (customers_actual.firstname === input_name_search.value.toLowerCase() && customers_actual.lastname === input_lastname_search.value.toLowerCase()) {
+            customerFound = true;
+            console.table(customerDirectory)
+            // client trouvé, on calcul son nombre de nuit * son prix de chambre
+            const price = roomPrice(customers_actual.typeOfRoom, customers_actual.nbr_night);
+            displayHtml.textContent = (`Le prix à payer pour le séjour de ${customers_actual.firstname} ${customers_actual.lastname} est de ${displayPrice(price)}`);
+            // On récupère son ID dans l'array pour le supprimer par la suite
+            const index = customerDirectory.indexOf(customers_actual);
+            // Suppression du client parti
+            customerDirectory.splice(index, 1);
+        }
+        if (!customerFound) {
+            // si aucun client trouvé
+            displayHtml.textContent = "Client Introuvable";
+        }
     }
 });

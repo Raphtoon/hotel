@@ -28,7 +28,87 @@
     </header>
 </head>
 
-<body>
+    <!-- Insertion background & text (postionnement) -->
+
+    <div class="insert">
+        <div class="text-insert">
+            <p>Accueil nouveau client</p>
+            <hr class="hr_style">
+        </div>
+    </div>
+
+    <!-- Gestion formulaire -->
+
+    <form id="first_form" class="form_config" action="">
+        <div class="champ_form">
+            <label for="firstname">prénom
+                <input type="text" placeholder="Jean" id="name">
+            </label>
+        </div>
+
+        <div class="champ_form">
+            <label for="lastname">Nom
+                <input type="text" placeholder="Dujardin" id="surname">
+            </label>
+        </div>
+
+        <div class="champ_form">
+            <label for="night">Nombre de nuit(s)
+                <input type="number" placeholder="2" min="1" id="numNight">
+            </label>
+        </div>
+
+        <div class="champ_form">
+            <label for="typeOfRoom">Type de chambre
+                <select id="typeOfRoom">
+                    <option value=189> Loft</option>
+                    <option value=65>Chambre 1 personne</option>
+                    <option value=89>Chambre 2 personnes</option>
+                    <option value=139>Chambre 4 personnes</option>
+                </select>
+            </label>
+        </div>
+
+        <!-- Bouton enregistrement-->
+        <div class="btn_radio">
+            <p>Petit déjeuner ?</p>
+            <input type="radio" id="breakfast_true" name="choice" value="Oui" checked>
+            <label for="breakfast_true">Oui</label>
+            <input type="radio" id="breakfast_false" name="choice" value="Non">
+            <label for="breakfast_false">Non</label>
+        </div>
+        <div class="buttonBrown">
+            <a href="" id="valueRegister"> Enregistrer le client <i class="fa-solid fa-calendar"
+                    style="color: #ffffff;"></i></a>
+        </div>
+    </form>
+
+
+    <div class="insert-two">
+        <div class="text-insert">
+            <p>Départ client</p>
+            <hr class="hr_style">
+        </div>
+    </div>
+    <!-- Second formulaire de recherche-->
+
+    <form id="scnd_form" class="form_config" action="">
+        <div class="champ_form">
+            <label for="firstname_search">prénom
+                <input type="text" placeholder="Jean" id="firstname_search">
+            </label>
+        </div>
+        <div class="champ_form">
+            <label for="lastname_search">Nom
+                <input type="text" placeholder="Dujardin" id="lastname_search">
+            </label>
+        </div>
+
+        <!-- Bouton enregistrement-->
+        <div class="buttonBrown">
+            <a href="" id="valueSearch"> Rechercher <i class="fa-solid fa-user" style="color: #ffffff;"></i></a>
+        </div>
+    </form>
 
 </body>
 
