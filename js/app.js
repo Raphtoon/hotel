@@ -58,7 +58,7 @@ clickForRegister.addEventListener("click", (e) => {
     const breakfast = input_dej.value;
 
     // print des valeurs actuelles
-    displayHtml.textContent = (`Résérvation au nom : ${nameOfCustomer} ${lastnameOfCustomer} \n pour ${number_night} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${breakfast} `)
+    alert(`Résérvation au nom : ${nameOfCustomer} ${lastnameOfCustomer} \n pour ${number_night} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${breakfast} `)
 
     // Création d'un nouveau client
     const customers_add = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
