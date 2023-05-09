@@ -23,10 +23,12 @@ let input_numnight = document.querySelector("#numNight");
 let input_dej = document.querySelector("#breakfast_true");
 // Stockage des valeurs breakfast_false
 let input_dej_false = document.querySelector("#breakfast_false");
+
 // Stockage des valeurs firstname_search
 // let input_name_search = document.querySelector("#firstname_search");
 // Stockage des valeurs lastname_search
 // let input_lastname_search = document.querySelector("#lastname_search");
+
 // variable avec l'id du bouton enregistement
 let clickForRegister = document.querySelector("#valueRegister");
 // variable avec l'id du bouton rechercher
@@ -44,8 +46,8 @@ function roomPrice(typeRoom, time) {
 };
 
 // Affichage du prix sous format €
-function displayPrice(price) {
-    return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(price);
+function displayPrice(prix) {
+    return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(prix);
 };
 
 // Sélectionner l'élément select par son ID // PROBLEME DE STOCKAGE A REGLER
@@ -65,13 +67,13 @@ clickForRegister.addEventListener("click", (e) => {
     const breakfast = input_dej.value;//valeur d'input petit déjeuner ? 
 
     // print des valeurs actuelles
-    alert(`Résérvation au nom : ${input_name.value} ${input_lastname.value} \n pour ${input_numnight.value} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${input_dej.value} `)
+    alert(`Résérvation au nom : ${nameOfCustomer} ${lastnameOfCustomer} \n pour ${number_night} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${breakfast} `)
 
     // Création d'un nouveau client
     const customers_add = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
     customerDirectory.push(customers_add);
     console.table(customerDirectory)
-    return customers_add
+    // return customers_add
 });
 
 
@@ -81,26 +83,29 @@ clickForSearch.addEventListener("click", (e) => {
     e.preventDefault();
 
     // Stockage des valeurs firstname_search
-    let input_name_search = document.querySelector("#firstname_search").value;
+    let input_name_search = document.querySelector("#firstname_search");
     // Stockage des valeurs lastname_search
-    let input_lastname_search = document.querySelector("#lastname_search").value;
-    
-    let customerFound = false;
+    let input_lastname_search = document.querySelector("#lastname_search");
+
+    customerFound = false;
+    console.table(customerDirectory)
+
     for (let i = 0; i < customerDirectory.length; i++) {
         let customers_actual = customerDirectory[i];
+
         // On recherche le client dans le tableau via son nom / prenom
-        if (customers_actual.name === input_name_search && customers_actual.lastname === input_lastname_search) {
+        if (customers_actual.firstname === input_name_search.value && customers_actual.lastname === input_lastname_search.value) {
             customerFound = true;
             // client trouvé, on calcul son nombre de nuit * son prix de chambre
-            alert("Personne trouvée.")
+            alert(`Personne trouvée.`)
             const price = roomPrice(customers_actual.typeOfRoom, customers_actual.nbr_night);
-            alert(`Le prix à payer est de ${displayPrice(price)}`);
+            displayHtml.textContent = (`Le prix à payer est de ${displayPrice(price)}`);
             // On récupère son ID dans l'array pour le supprimer par la suite
             const index = customerDirectory.indexOf(customers_actual);
             // Suppression du client parti
             customerDirectory.splice(index, 1);
             console.table(customerDirectory);
-            break; // on sort de la boucle puisque nous avons trouvé le client recherché
+            break;
         }
     }
     if (!customerFound) {
