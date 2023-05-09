@@ -24,9 +24,9 @@ let input_dej = document.querySelector("#breakfast_true");
 // Stockage des valeurs breakfast_false
 let input_dej_false = document.querySelector("#breakfast_false");
 // Stockage des valeurs firstname_search
-let input_name_search = document.querySelector("#firstname_search");
+// let input_name_search = document.querySelector("#firstname_search");
 // Stockage des valeurs lastname_search
-let input_lastname_search = document.querySelector("#lastname_search");
+// let input_lastname_search = document.querySelector("#lastname_search");
 // variable avec l'id du bouton enregistement
 let clickForRegister = document.querySelector("#valueRegister");
 // variable avec l'id du bouton rechercher
@@ -68,32 +68,43 @@ clickForRegister.addEventListener("click", (e) => {
     alert(`Résérvation au nom : ${input_name.value} ${input_lastname.value} \n pour ${input_numnight.value} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${input_dej.value} `)
 
     // Création d'un nouveau client
-    const customers = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
-    customerDirectory.push(customers);
+    const customers_add = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
+    customerDirectory.push(customers_add);
     console.table(customerDirectory)
+    return customers_add
 });
 
 
 
 clickForSearch.addEventListener("click", (e) => {
     // Annuler le reload de la page
-    e.preventDefault()
-    // On recherche le client dans le tableau via son nom / prenom
-    const customers_actual = customerDirectory.find(customers => customers.input_name_search.toLowerCase() === input_name_search.value.toLowerCase() && customers.lastname.toLowerCase() === input_lastname_search.value.toLowerCase());
-    // S'il est find on calcul son nombre de nuit * son prix de chambre
-    if (customers_actual) {
-        alert("Personne trouvé.")
-        const price = roomPrice(customers_actual.typeOfRoom, customers_actual.nbr_night)
-        alert(`Le prix à payer est de ${displayPrice(price)}`);
-        // On recup son ID dans l'array pour le delete par la suite
-        const index = customerDirectory.indexOf(customers_actual);
-        // Delete du client parti
-        customerDirectory.splice(index, 1);
-        console.table(customerDirectory);
-        return;
-        // Si client non trouvé
-    } else {
-        alert("Client non trouvé")
-        return;
+    e.preventDefault();
+
+    // Stockage des valeurs firstname_search
+    let input_name_search = document.querySelector("#firstname_search").value;
+    // Stockage des valeurs lastname_search
+    let input_lastname_search = document.querySelector("#lastname_search").value;
+    
+    let customerFound = false;
+    for (let i = 0; i < customerDirectory.length; i++) {
+        let customers_actual = customerDirectory[i];
+        // On recherche le client dans le tableau via son nom / prenom
+        if (customers_actual.name === input_name_search && customers_actual.lastname === input_lastname_search) {
+            customerFound = true;
+            // client trouvé, on calcul son nombre de nuit * son prix de chambre
+            alert("Personne trouvée.")
+            const price = roomPrice(customers_actual.typeOfRoom, customers_actual.nbr_night);
+            alert(`Le prix à payer est de ${displayPrice(price)}`);
+            // On récupère son ID dans l'array pour le supprimer par la suite
+            const index = customerDirectory.indexOf(customers_actual);
+            // Suppression du client parti
+            customerDirectory.splice(index, 1);
+            console.table(customerDirectory);
+            break; // on sort de la boucle puisque nous avons trouvé le client recherché
+        }
+    }
+    if (!customerFound) {
+        // si aucun client trouvé
+        displayHtml.textContent = "Client non trouvé";
     }
 });
