@@ -64,7 +64,6 @@ clickForRegister.addEventListener("click", (e) => {
     const customers_add = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
     customerDirectory.push(customers_add);
     console.table(customerDirectory)
-    // return customers_add
 });
 
 
