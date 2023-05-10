@@ -79,13 +79,12 @@ clickForRegister.addEventListener("click", (e) => {
     // Création d'un nouveau client
     let customers_add = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
     customerDirectory.push(customers_add);
-    console.table(customerDirectory)
-
 
     //Stockage permanent dans un array sous format JSON
     let grabStorage = (JSON.stringify(customerDirectory));
     localStorage.setItem('add_customer', grabStorage);
     console.log(grabStorage);
+    console.log(customerDirectory);
 });
 
 clickForSearch.addEventListener("click", (e) => {
