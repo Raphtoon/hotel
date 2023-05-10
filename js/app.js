@@ -11,8 +11,7 @@ class Customer {
 
 //Creation du tableau de stockage des clients
 let customerDirectory = [];
-//Stockage permanent dans un array sous format JSON
-let grabStorage = [];
+
 // Stockage de la valeur name
 let input_name = document.querySelector("#name");
 // Stockage de la valeur input_lastname
@@ -31,7 +30,7 @@ let clickForSearch = document.querySelector("#valueSearch");
 let displayHtml = document.querySelector("#printJs");
 // Valeur pas défaut du selected suite a des pb d'ajout de la valeur si le menu n'est pas ouvert.
 let selectedValue = 189;
-console.table(grabStorage)
+console.log(localStorage);
 
 function checkOrNot() {
     if (input_dej.checked) {
@@ -82,9 +81,11 @@ clickForRegister.addEventListener("click", (e) => {
     customerDirectory.push(customers_add);
     console.table(customerDirectory)
 
-    let grabStorage = JSON.stringify(customers_add);
-    grabStorage = localStorage.setItem('add_customer', JSON.stringify(customerDirectory));
-    console.log(localStorage.getItem('add_customer'))
+
+    //Stockage permanent dans un array sous format JSON
+    let grabStorage = (JSON.stringify(customerDirectory));
+    localStorage.setItem('add_customer', grabStorage);
+    console.log(grabStorage);
 });
 
 clickForSearch.addEventListener("click", (e) => {
