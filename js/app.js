@@ -72,6 +72,7 @@ selectRoom.addEventListener("change", () => {
     selectedValue = selectRoom.value;
 });
 
+
 clickForRegister.addEventListener("click", (e) => {
     e.preventDefault();
 
@@ -96,10 +97,10 @@ clickForRegister.addEventListener("click", (e) => {
     // const grabStorage_Json = JSON.parse(grabStorage); // Cast sous format json
     // console.log(grabStorage_Json);
     // console.table(customerDirectory);
-
     // On itère le nombre 
-    for (let i = 0; i < customerDirectory.length; i++) {
-        localStorage.setItem(`add_customer${i}`, JSON.stringify(customerDirectory[i]));
+
+    for (i = 0; i < customerDirectory.length; i++) {
+        localStorage.setItem(`add_customer${localStorage.length}`, JSON.stringify(customerDirectory[i]));
     }
     console.log(localStorage);
 });
