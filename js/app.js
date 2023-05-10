@@ -11,6 +11,8 @@ class Customer {
 
 //Creation du tableau de stockage des clients
 let customerDirectory = [];
+//Stockage permanent dans un array sous format JSON
+let grabStorage = [];
 // Stockage de la valeur name
 let input_name = document.querySelector("#name");
 // Stockage de la valeur input_lastname
@@ -29,13 +31,13 @@ let clickForSearch = document.querySelector("#valueSearch");
 let displayHtml = document.querySelector("#printJs");
 // Valeur pas défaut du selected suite a des pb d'ajout de la valeur si le menu n'est pas ouvert.
 let selectedValue = 189;
-
+console.table(grabStorage)
 
 function checkOrNot() {
     if (input_dej.checked) {
         answer = true;
     } else {
-        answer = false
+        answer = false;
     } return answer;
 };
 
@@ -76,15 +78,18 @@ clickForRegister.addEventListener("click", (e) => {
     alert(`Résérvation au nom : ${nameOfCustomer} ${lastnameOfCustomer} \n pour ${number_night} nuit(s) \n au prix de : ${typeOfRoom}€ \n Petit déjeuner :  ${breakfast} `)
 
     // Création d'un nouveau client
-    const customers_add = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
+    let customers_add = new Customer(nameOfCustomer, lastnameOfCustomer, number_night, typeOfRoom, breakfast);
     customerDirectory.push(customers_add);
     console.table(customerDirectory)
+
+    let grabStorage = JSON.stringify(customers_add);
+    grabStorage = localStorage.setItem('add_customer', JSON.stringify(customerDirectory));
+    console.log(localStorage.getItem('add_customer'))
 });
 
 clickForSearch.addEventListener("click", (e) => {
     // Annuler le reload de la page
     e.preventDefault();
-
     // Stockage des valeurs firstname_search
     let input_name_search = document.querySelector("#firstname_search");
     // Stockage des valeurs lastname_search
