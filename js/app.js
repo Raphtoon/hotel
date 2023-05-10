@@ -29,7 +29,6 @@ let clickForSearch = document.querySelector("#valueSearch");
 let displayHtml = document.querySelector("#printJs");
 // Valeur pas défaut du selected suite a des pb d'ajout de la valeur si le menu n'est pas ouvert.
 let selectedValue = 189;
-console.log(localStorage);
 deleteContent()
 console.log(localStorage);
 
