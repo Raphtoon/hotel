@@ -11,7 +11,6 @@ class Customer {
 
 //Creation du tableau de stockage des clients
 let customerDirectory = [];
-
 // Stockage de la valeur name
 let input_name = document.querySelector("#name");
 // Stockage de la valeur input_lastname
@@ -31,6 +30,16 @@ let displayHtml = document.querySelector("#printJs");
 // Valeur pas défaut du selected suite a des pb d'ajout de la valeur si le menu n'est pas ouvert.
 let selectedValue = 189;
 console.log(localStorage);
+deleteContent()
+console.log(localStorage);
+
+
+function deleteContent() { // Supprime le contenue du localStorage
+    let dlt = confirm("Voulez vous supprimer l'entièreté du stockage permanent ?")
+    if (dlt) {
+        localStorage.clear()
+    }
+}
 
 function checkOrNot() {
     if (input_dej.checked) {
@@ -81,10 +90,18 @@ clickForRegister.addEventListener("click", (e) => {
     customerDirectory.push(customers_add);
 
     //Stockage permanent dans un array sous format JSON
-    let grabStorage = (JSON.stringify(customerDirectory));
-    localStorage.setItem('add_customer', grabStorage);
-    console.log(grabStorage);
-    console.log(customerDirectory);
+    //1ère phase d'enregistrement dans le localStorage ; Problème : Je n'enregistrais qu'une valeur car je bouclais pas + code brouillon et pas opti.
+    // let grabStorage = (JSON.stringify(customerDirectory));
+    // localStorage.setItem('add_customer', grabStorage);
+    // const grabStorage_Json = JSON.parse(grabStorage); // Cast sous format json
+    // console.log(grabStorage_Json);
+    // console.table(customerDirectory);
+
+    // On itère le nombre 
+    for (let i = 0; i < customerDirectory.length; i++) {
+        localStorage.setItem(`add_customer${i}`, JSON.stringify(customerDirectory[i]));
+    }
+    console.log(localStorage);
 });
 
 clickForSearch.addEventListener("click", (e) => {
@@ -118,3 +135,5 @@ clickForSearch.addEventListener("click", (e) => {
         }
     }
 });
+
+
